@@ -1,0 +1,73 @@
+---
+title: "Criando meu relatório"
+author: "Seu nome"
+date: "data"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Apresentação da empresa
+
+Descreva aqui uma breve descrição da sua empresa. Selecione uma imagem representativa.
+
+![ ](https://blog.unicesumar.edu.br/hubfs/GettyImages-645373486%20(1).jpg){width=14cm} 
+
+
+## Produtos & Serviços
+
+Descreva aqui alguns produtos ou serviços realizados pela empresa
+
+Insira aqui uma ou mais imagens ilustrativas dos produtos ou serviços
+
+###Sondagem
+
+![ ](http://www.ideiasocioambiental.com.br/wp-content/uploads/2019/03/sondagem.png)
+
+###Concretagem
+
+![ ](http://www.cimentoitambe.com.br/wp-content/uploads/2019/09/concretagem.jpg)
+
+###Implosão
+
+![ ](https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Implosao.jpg/1200px-Implosao.jpg)
+
+##Orçamento
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+produtos <- c("Sondagem","Concretagem","Implosão")
+texto <-c("Antes do início de qualquer obra realizada pela nossa empresa, fazemos o estudo do solo através da sondagem de forma a garantir segurança e economia de materiais, evitando-se que retrabalhos no futuro.","A concretagem é um dos momentos mais importantes e também críticos de uma construção. Nossa empresa preocupa-se com o alinhamento quanto aos critérios de mão de obra, materiais, equipamentos e dispositivos de segurança que são essenciais para um bom andamento desta etapa.","A implosão é a maneira mais prática para se realizar a demolição de um edifício com custo baixo e rapidez, mais eficiência do que a demolição convencional.")
+
+custo <- c(2000, 300, 450)
+unidade <- c("quantidade de furo", "volume em m3", "volume em m3")
+
+custoformatado <-paste0("R$",custo,",00")
+
+#Suponha que haja vários produtos
+#Seu relatório vai apresentar uma certa escolha do cliente
+#Suponha que o cliente deseja realizar a sondagem.
+#Neste caso sondagem corresponde a primeira posição no vetor, ou seja, vamos definir i=1
+
+i=1
+
+```
+
+`r texto[i]` Nossa empresa oferece o serviço de **`r produtos[i]`** com um dos menores custos do mercado. Para atender sua necessidade oferecemos o valor estimado de   `r custoformatado[i]` por `r unidade[i]`.
+
+
+
+```{r echo=FALSE}
+#Poderia ainda ter os quantitativos do cliente.
+#Se for sondagem, supor que sejam 10 furos
+#Se for concretagem, supor que seja 30m3
+#Se for implosão, supor que seja 1000m3
+
+dados=c(10,30, 1000)
+custototal = custo*dados
+custototalformatado <-paste0("R$",custototal,",00")
+
+```
+
+Considerando o levantamento realizado no local, foram estimados um total de `r dados[i]` unidades de `r unidade[i]`, totalizando o valor total de `r custototalformatado[i]`.
