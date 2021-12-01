@@ -1,0 +1,654 @@
+---
+title: "Programação em R"
+author: "Profa. Luciane Alcoforado/AFA"
+date: "2 de dezembro de 2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+![`r "Cartaz do Minicurso"` \label{fig1}](cartaz.png){width=14cm}
+
+
+# Tópicos a serem abordados
+
+1- Introdução, o que é o R e o Rstudio, como obter e instalar (tempo: aprox. 15 min)
+
+2- O que são os pacotes do R, como obter e instalar (tempo: aprox. 15 min)
+
+3- Operações matemáticas básicas, criação de objetos como vetores, matrizes e tabelas (tempo aprox. 1h)
+
+4- Operações Lógicas (tempo aprox. 30 min)
+
+5- Operações com objetos (vetor, matriz e tabela) (tempo aprox. 30 min)
+
+6- Funções Estatísticas Básicas (tempo aprox. 30 min)
+
+7- Criando um relatório simples com Rmarkdown (tempo aprox. 1h)
+
+#Meus livros publicados
+
+![`r "Livros da profa. Luciane F. Alcoforado"` \label{fig2}](Livros.png){width=14cm}
+
+
+
+#Introdução
+
+##O que é o R?
+
+É uma linguagem idealizada para realizar análise de dados através de um sistema para computação estatística e gráfica, permitindo explorar dados, produzir funções, computar linhas de comando ou utilizar  pacotes disponíveis na rede CRAN (Comprehensive R Archive Network). 
+
+
+##O que é o R-Studio?
+
+O *R-Studio* não é o R, e sim um ambiente de desenvolvimento integrado do R, portanto ele contém o R e o acesso a todos os pacotes disponíveis no CRAN. Atualmente é o melhor ambiente para desenvolvimento de pesquisas e relatórios com análise de dados em que se faça uso do R. 
+
+
+##Como obter o software R?
+
+É muito simples e rápido obter o software R, basta acessar a página do projeto e realizar o *download* através do endereço <https://cran.r-project.org/>, selecionando o sistema operacional do seu equipamento, há disponível para Linux, para MAC e para Windows.
+
+Instale primeiro o R e em seguida o *R-Studio*. Para instalar o *R-Studio* você deve fazer o *download* através do endereço <http://www.rstudio.com/products/rstudio/download/>, selecionando o sistema operacional do seu equipamento, há disponível para MAC, Windows, Ubuntu, Fedora. 
+
+O passo a passo de instalação pode ser visto no vídeo do canal do youtube do grupo **Estatística é com R** em <https://www.youtube.com/watch?v=8LnZNC4hxdQ>
+
+
+
+# Pacotes do R
+
+Os pacotes são um conjunto de funções programadas para realizar uma ou mais tarefas.
+
+
+Para saber sobre os pacotes disponíveis no CRAN consulte <https://cran.r-project.org/web/packages/index.html>. É possível ver a lista por data de publicação ou por nome do pacote.
+
+Alguns pacotes já estão disponíveis para uso tão logo se instale o R, já outros necessitam ser instalados. 
+
+A instalação é tarefa simples:
+
+```{r eval=FALSE, include=T}
+install.packages("nome do pacote")
+```
+
+Para este minicurso será necessário instalar o pacote *Rmarkdown*
+
+```{r eval=FALSE, include=T}
+install.packages("Rmarkdown")
+```
+
+#Operações Matemáticas
+
+```{r}
+5+4    #adição
+6-2    #subtração
+7*3    #multiplicação
+45/9   #divisão
+2^2    #potência
+sqrt(121) #raiz
+exp(0)  #exponencial
+log(1)  #log na base e
+log10(1) #log na base 10
+log2(4) #log na base 2
+log(9,3) #log na base 3 ou qualquer outra
+```
+
+##Faça 
+
+1- O orçamento de um projeto possui custo estimado de R\$980.000,00. Converta este valor para dólar, considerando a taxa de câmbio de 1 dólar =  R\$5.50
+
+```{r}
+
+```
+
+2- No início de 2019 o saco de cimento custava em média R\$20,00 e atualmente seu valor gira em torno de R\$35,00. Qual o aumento percentual observado nesse período de tempo no valor do saco de cimento?
+
+```{r}
+
+```
+
+3- Para fazer um muro de 2.20m por 35m serão utilizados blocos de concreto com rendimento de 12.5 blocos por m^2. Quantos blocos serão necessários adquirir para fazer o muro?
+
+```{r}
+
+```
+
+
+#Operações Lógicas
+
+Comandos lógicos
+
+- Igualdade: ==
+
+- Diferença: !=
+
+- Desigualdades: >; <; <=; >=
+
+- Lógicas: e - &; ou - |; negação !
+
+```{r}
+#Testando igualdade
+log(10)==3
+
+#Testando diferença
+sqrt(9)!=3
+
+#Testando desigualdades
+3^10 > 1000
+
+#Testando a condição e
+4>=8 & 2<3
+
+#Testando a condição ou
+4>=8 | 2<3
+
+#Testando a negação
+!5>=3 
+```
+
+##Faça
+
+Um pacote contém 2kg de rejunte custando R\$11,00 enquanto que outro pacote contém 5kg de rejunte custando R\$30,00. Verifique através de um teste lógico se os preços por kg destas duas modalidades de pacotes são equivalentes?
+
+#Operações com objetos
+
+##Criando vetores
+
+```{r}
+#cria um vetor com 3 números
+c(7, 4, 1) 
+
+#cria um vetor com 3 nomes (vetor de caracter)
+c("sete", "quatro", "um") 
+
+#cria uma sequencia iniciando em 5 e terminando em 15
+5:15
+
+```
+
+##Operando vetores
+
+```{r}
+#Criando dois vetores x e y
+x = 5:10
+y = 15:20
+
+#visualizando os dados do vetor x e y
+x
+y
+
+#Somando dois vetores x e y
+x+y
+
+#Multiplicando dois vetores x e y
+x*y
+
+#Dividindo o vetor y pelo vetor x
+y/x
+
+#Elevendo o vetor x a potência 2
+x^2
+
+#Obtendo o logaritmo do vetor x
+log(x)
+
+#Obtendo o valor da segunda posição do vetor x
+x[2]
+
+#Obtendo o menor valor do vetor y
+min(y)
+
+#Obtendo a posição do menor valor do vetor y
+which.min(y)
+
+#Obtendo a posição do vetor y que corresponde ao valor 19
+which(y==19)
+
+#Obtendo o valor da quinta posição do vetor y
+y[5]
+```
+
+##Faça
+
+Para realizar o orçamento de construção de muros de quatro obras o engenheiro organizou os dados em vetores. O vetor a contém a metragem quadrada dos muros; o vetor b contém o rendimento em unidade de bloco que será utilizado por $m^2$ e o vetor c contém o custo do bloco por unidade.
+
+```{r}
+a = c(50, 98, 38, 110)
+b = c(12.5, 14, 9, 20)
+c = c(2, 1.5, 1.2, 3.5)
+a
+b
+c
+```
+
+Realize operações com estes vetores para fornecer o custo do muro de cada obra.
+
+```{r}
+
+```
+
+
+##Criando matrizes
+
+```{r}
+#criando uma matriz organizando vetores por linha
+M1 = rbind(x,y)
+M1
+
+#criando uma matriz organizando vetores por coluna
+M2 = cbind(x,y)
+M2
+```
+
+##Operando matrizes
+
+```{r}
+#Obtendo as dimensões da matriz
+dim(M1)
+
+#obtendo a estrutura da matriz
+str(M2)
+
+#Obtendo o valor da linha 2 coluna 4 da matriz M1
+M1[2,4]
+
+#Obtendo o valor da linha 4 coluna 1 da matriz M2
+M2[4,1]
+
+#Acrescentando uma linha na matriz M1 ao final
+M1 = rbind(M1, z=1:6)
+M1
+
+#Acrescentando uma linha na matriz M1 no ínicio
+M1 = rbind(z=1:6,M1)
+M1
+
+#Acessando os valores da linha 2 da matriz M1
+M1[2, ]
+
+#Acessando os valores da coluna 2 da matriz M1
+M1[ ,2]
+
+#Somando duas matrizes
+
+M1 + M1
+
+#Multiplicando duas matrizes
+M1*M1
+
+#Obtendo o valor máximo de uma matriz
+max(M1)
+
+#Obtendo a posição da matriz que corresponde ao valor 20
+which(M1==20, arr.ind = TRUE)
+
+#Obtendo a transposta da matriz M1
+t(M1)
+```
+
+##Criando dataframe
+
+```{r}
+
+#criando um dataframe a partir dos vetores x e y
+DT1 = data.frame(x,y)
+DT1
+
+```
+
+##Operando dataframe
+
+```{r}
+#Obtendo as dimensões do dataframe
+dim(DT1)
+
+#obtendo a estrutura da matriz
+str(DT1)
+
+#Obtendo o valor da linha 2 coluna 4 do data frame
+DT1[2,4]
+
+#Acrescentando uma coluna no dataframe
+DT1 = data.frame(DT1, z=1:6)
+DT1
+
+
+#Acessando os valores da linha 2 do dataframe DT1
+DT1[2, ]
+
+#Acessando os valores da coluna 2 do dataframe DT1
+DT1[ ,2]
+
+```
+
+##Operações Lógicas em objetos
+
+
+```{r}
+#Testando se um elemento do dataframe é igual a um certo valor
+DT1[1,2]==3
+
+#Testando se um elemento do dataframe é diferente de um certo valor
+DT1[1,2]!=3
+
+#Testando se um elemento do dataframe é maior ou igual a um certo valor
+DT1[1,2]>=3
+
+#Testando a condição e
+DT1[1,2]>=3 & DT1[1,3]<3
+
+#Testando a condição ou
+DT1[1,2]>=3 | DT1[1,3]<3
+
+#Testando a negação
+!DT1[1,2]>=3 
+```
+
+##Comando de repetição For
+
+O **for** permite controlar o número de vezes que um ciclo é executado através de uma variável de controle que vai seguir uma sequencia de valores pré definidos em cada iteração do ciclo. 
+
+Sintaxe genérica:
+
+for(*var* in *conjunto*){
+*bloco de instruções*}
+
+Criar um dataframe construindo cada coluna de forma iterativa
+
+```{r}
+#Criar um data frame inicial com uma coluna
+DT2 = data.frame(x=(1:5))
+#Acrescentar novas colunas de forma repetitiva - comando for
+for (i in 1:4){
+  DT2 = data.frame(DT2,x=(1:5)+i)
+}
+#Ver o resultado
+DT2
+```
+
+Calculando a soma de cada coluna do objeto DT2
+
+```{r}
+soma = NULL
+
+for (i in 1:ncol(DT2)){
+    s=sum(DT2[,i])
+    soma = c(soma,s)
+}
+#Ver o resultado
+soma
+```
+
+Outra maneira de realizar o mesmo procedimento é utilizando a função **apply** que  permite-nos aplicar uma função qualquer a uma das dimensões (1- linha; 2-coluna) de uma matriz ou tabela. 
+
+Sintaxe genérica:
+
+apply(matriz/tabela, dimensão, função)
+
+
+```{r}
+apply(DT2,2,sum)
+
+```
+
+Em (Alcoforado, 2021) há uma lista de funções básica do R no capítulo *Aprenda o essencial do pacote base* - pag 33-36.
+ 
+##Faça
+
+Suponha que se deseja realizar o download de diversos arquivos pdf. Para tanto, foi organizado um vetor com os endereços e um looping sobre o vetor para baixar os arquivos, conforme script:
+
+```{r}
+url_pdfs <- c("https://periodicos.uff.br/anaisdoser/article/download/29256/16968",
+  "https://github.com/Lucianea/visualizacao-de-dados-com-o-software-R/raw/master/Visualizando_Dados_Luciane_Ariel_2017.pdf",
+  "https://periodicos.uff.br/anaisdoser/article/download/29336/17062")
+
+
+#"https://periodicos.uff.br/anaisdoser/article/download/29325/17051/100880"
+
+salve_aqui <- paste0("document_", 1:3, ".pdf")
+
+for(i in seq_along(url_pdfs)){
+download.file(url_pdfs[i], salve_aqui[i], mode = "wb")
+}
+```
+
+Sua tarefa agora é rodar o script e verificar sua pasta de trabalho, conferindo que o procedimento foi realizado.
+
+#Funções Estatísticas Básicas
+
+##Média
+
+A média é a soma de todos os valores de um conjunto de dados (numérico) dividido pelo tamanho do conjunto de dados.
+
+Função no R: *mean()*
+
+```{r}
+#Obtendo a média do vetor x
+x = 1:100
+
+mean(x)
+
+#Obtendo a média de todas as colunas de uma tabela
+DT2
+apply(DT2,2,mean)
+
+#Obtendo a média de todas as linhas de uma tabela
+apply(DT2,1,mean)
+
+```
+
+##Mediana
+
+É o valor central de um conjunto de dados.
+
+Função no R: *median()*
+
+```{r}
+#Obtendo a mediana do vetor x
+x = 1:100
+
+median(x)
+
+#Obtendo a mediana de todas as colunas de uma tabela
+DT2
+apply(DT2,2,median)
+
+#Obtendo a mediana de todas as linhas de uma tabela
+apply(DT2,1,median)
+
+```
+
+##Desvio-padrão
+
+É uma medida de variabilidade do conjunto de dados.
+
+Função no R: *sd()*
+
+```{r}
+#Obtendo o desvio-padrão do vetor x
+x = 1:100
+
+sd(x)
+
+#Obtendo o desvio-padrão de todas as colunas de uma tabela
+DT2
+apply(DT2,2,sd)
+
+#Obtendo o desvio-padrão de todas as linhas de uma tabela
+apply(DT2,1,sd)
+
+```
+
+##Coeficiente de variação - CV
+
+Assim como o desvio-padrão é também uma medida de variabilidade, só que adimensional, ou seja, mede a variabilidade relativa dos dados em relação à media dos mesmos, seu valor pode ser dado em porcentagem.
+
+$CV = \frac{desvio-padrão}{média}100\%$
+
+```{r}
+#Obtendo o cv do vetor x
+x = 1:100
+
+100*sd(x)/mean(x)
+
+#Obtendo o cv de todas as colunas de uma tabela
+
+100*apply(DT2,2,sd)/apply(DT2,2,mean)
+
+#Obtendo o cv de todas as linhas de uma tabela
+100*apply(DT2,1,sd)/apply(DT2,1,mean)
+
+```
+
+A interpretação das faixas de valores do coeficiente de variação podem ser obtidas em (Alcoforado, 2021) no capítulo *Análise descritiva dos dados", página 251.
+
+##Lendo uma base de dados
+
+```{r include=FALSE}
+vendas1 <- read.csv("C:/Users/TPC02/Documents/Livro R/AltaBooks/vendas1.csv")
+dados_com_virgula = vendas1
+```
+
+Considere uma base de dados armazenada em arquivo csv.
+
+No pacote básico do R há dois comandos para realizar a leitura: *read.csv()* e *read.csv2()*. A diferença é referente ao separador de campo do arquivo que pode ser "," (https://raw.githubusercontent.com/Lucianea/Alta/master/vendas1.csv) ou ";" (https://raw.githubusercontent.com/Lucianea/Alta/master/vendas.csv). 
+
+```{r eval=FALSE, include=T}
+dados_com_virgula = read.csv("https://raw.githubusercontent.com/Lucianea/Alta/master/vendas1.csv")
+
+dados_com_virgula
+
+dados_com_pontovirgula = read.csv("https://raw.githubusercontent.com/Lucianea/Alta/master/vendas.csv")
+
+dados_com_pontovirgula
+```
+
+A leitura da base de dados gera um objetivo do tipo dataframe:
+
+```{r eval=FALSE, include=FALSE}
+str(dados_com_virgula)
+```
+
+Um resumo rápido da base de dados é obtida através da função *summary()*
+
+```{r eval=FALSE, include=FALSE}
+summary(dados_com_virgula)
+```
+
+Considerando que os dados da base de dados refere-se a registros de vendas de três filiais de uma rede num certo mês, com informações sobre o número do cupom fiscal, a filial, o valor da compra, o número de itens comprado, o desconto em percentual, a quinzena da venda.
+
+Com base nas funções vistas até o momento vamos responder algumas perguntas:
+
+1- Qual o valor total vendido pela filial A?
+
+```{r}
+#Obtendo a base somente da filial A:
+
+dadosA = dados_com_virgula[dados_com_virgula[,2]=="A",
+  ]
+
+#visualizando dadosA
+dadosA
+
+#Calculando a soma da coluna 3, ou seja, o total das vendas
+
+sum(dadosA[ ,3])
+```
+
+2- Qual o valor médio do desconto da filial B?
+
+```{r}
+#Obtendo a base somente da filial B:
+
+dadosB = dados_com_virgula[dados_com_virgula[,2]=="B",
+  ]
+
+#visualizando dadosB
+dadosB
+
+#Calculando a média da coluna 5, ou seja, a média dos descontos
+
+mean(dadosB[ ,5])
+```
+
+3- A quinzena 1 vendeu mais que a quinzena 2 na rede (considerando todas as filiais)
+
+```{r}
+#Obtendo a base somente da quinzena 1:
+
+dadosq1 = dados_com_virgula[dados_com_virgula[,6]==1,
+  ]
+
+#visualizando dadosq1
+dadosq1
+
+#Calculando a soma da coluna 3, ou seja o total de vendas
+
+sum(dadosq1[ ,3])
+
+#Obtendo a base somente da quinzena 2:
+
+dadosq2 = dados_com_virgula[dados_com_virgula[,6]==2,
+  ]
+
+#visualizando dadosq2
+dadosq2
+
+#Calculando a soma da coluna 3, ou seja o total de vendas
+
+sum(dadosq2[ ,3])
+
+#respondendo a pergunta com teste lógico
+sum(dadosq1[ ,3]) > sum(dadosq2[ ,3])
+
+
+```
+
+4- Qual o número do cupom que vendeu mais itens? E quantas unidades foram vendidas neste cupom?
+
+```{r}
+#Obtendo a linha correspondente ao maior valor da coluna 4
+
+linha = dados_com_virgula[dados_com_virgula[,4]==max(dados_com_virgula[,4]),
+  ]
+
+#Obtendo o número do cupom e a quantidade vendida, ou seja, coluna 1 e 4
+linha[,c(1,4)]
+```
+
+5- Acrescente na resposta anterior em que quinzena foi vendido o número máximo de itens
+
+```{r}
+linha[,c(1,4,6)]
+```
+
+#Criando um relatório
+
+Para criar um relatório utilizamos o pacote **Rmarkdown**. É necessário instalar este pacote e após isso abrir através do Rstudio um arquivo do tipo Rmd.
+
+Ao abrir um novo arquivo Rmd, um modelo explicativo é aberto para dar início ao processo de aprendizagem.
+
+Este minicurso foi criado no arquivo Rmd, para ver seu código basta acessar o arquivo que ficará disponibilizado no github.
+
+As saídas após compilação podem ser html, doc ou pdf. Inicie pela saída html que é a mais amigável.
+
+Para aprofundar mais na programação com R consulte a bibliografia deste minicurso.
+
+
+###Referência Bibliográfica
+
+ALCOFORADO, L.F. **Utilizando a linguagem R: conceitos, manipulação, visualização, modelagem e elaboração de relatório**, Rio de Janeiro, Alta Books, 2021.
+
+R Core Team, R: A
+  language and environment for
+  statistical computing. **R
+  Foundation for Statistical
+  Computing**, Vienna, Austria, 2021.
+  URL (https://www.R-project.org/).
+
